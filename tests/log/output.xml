@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.2 on win32)" generated="2024-04-17T01:01:43.552043" rpa="false" schemaversion="5">
+<suite id="s1" name="User" source="C:\Users\t.vinicius.santos\Desktop\robot\robot-qacoders\api_academy\tests\user.robot">
+<test id="s1-t1" name="TC01 - Login New User" line="13">
+<kw name="Login Admin" owner="auth">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T01:01:43.950642" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T01:01:43.950642" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T01:01:43.951719" level="INFO">${body} = {'mail': 'sysadmin@qacoders.com', 'password': '1234@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${mail.admin}</arg>
+<arg>password=${password.admin}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T01:01:43.950642" elapsed="0.001077"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T01:01:43.951719" level="INFO">Creating Session using : alias=auth_session, url=https://quality-eagles.qacoders-academy.com.br/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${alias}</arg>
+<arg>${url}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T01:01:43.951719" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T01:01:45.187352" level="INFO">POST Request : url=https://quality-eagles.qacoders-academy.com.br/api/login/ 
+ path_url=/api/login/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '58'} 
+ body=b'{"mail": "sysadmin@qacoders.com", "password": "1234@Test"}' 
+ </msg>
+<msg time="2024-04-17T01:01:45.187352" level="INFO">POST Response : url=https://quality-eagles.qacoders-academy.com.br/api/login/ 
+ status=200, reason=OK 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Wed, 17 Apr 2024 04:01:47 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"534-5y5q6R3ZsmKVuzKq02xEnQ0fzH4"', 'Content-Encoding': 'gzip'} 
+ body={"msg":"Olá Qa-Coders-SYSADMIN, autenticação autorizada com sucesso!","user":{"_id":"65330945fb1f6c52f1ccde30","fullName":"Qa-Coders-SYSADMIN","mail":"sysadmin@qacoders.com","password":"$2b$10$6kvBz0Ar8HxM7MlmyFcXEO7y/w4k2ZHDXlU/8MGf7/kpF5QoU1eqG","accessProfile":"SYSADMIN","cpf":"11111111111","status":true,"audit":[{"registeredBy":{"userId":"111111111111111111","userLogin":"sysadmin@qacoders.com"},"registrationDate":"sexta-feira, 20/10/2023, 20:12:05 BRT","registrationNumber":"01","companyId":"Qa.Coders","_id":"65330945fb1f6c52f1ccde31"}],"__v":0},"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejBBcjhIeE03TWxteUZjWEVPN3kvdzRrMlpIRFhsVS84TUdmNy9rcEY1UW9VMWVxRyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjEyOjA1IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzA5NDVmYjFmNmM1MmYxY2NkZTMxIn1dLCJfX3YiOjAsImlhdCI6MTcxMzMyNjUwNywiZXhwIjoxNzEzNDEyOTA3fQ.P-3ey7DYNkW288lYRfiE9dWASf_K46pJtg8rNbjUrFo"} 
+ </msg>
+<msg time="2024-04-17T01:01:45.187352" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/api/login/</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T01:01:43.951719" elapsed="1.235633"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.188348" level="INFO">&lt;Response [200]&gt;</msg>
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.187352" elapsed="0.000996"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.190341" level="INFO">${response_body} = {'msg': 'OlÃ¡ Qa-Coders-SYSADMIN, autenticaÃ§Ã£o autorizada com sucesso!', 'user': {'_id': '65330945fb1f6c52f1ccde30', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$...</msg>
+<var>${response_body}</var>
+<arg>json.loads('''${response.content}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.188348" elapsed="0.001993"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.190341" level="INFO">{'msg': 'OlÃ¡ Qa-Coders-SYSADMIN, autenticaÃ§Ã£o autorizada com sucesso!', 'user': {'_id': '65330945fb1f6c52f1ccde30', 'fullName': 'Qa-Coders-SYSADMIN', 'mail': 'sysadmin@qacoders.com', 'password': '$2b$10$6kvBz0Ar8HxM7MlmyFcXEO7y/w4k2ZHDXlU/8MGf7/kpF5QoU1eqG', 'accessProfile': 'SYSADMIN', 'cpf': '11111111111', 'status': True, 'audit': [{'registeredBy': {'userId': '111111111111111111', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'sexta-feira, 20/10/2023, 20:12:05 BRT', 'registrationNumber': '01', 'companyId': 'Qa.Coders', '_id': '65330945fb1f6c52f1ccde31'}], '__v': 0}, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejBBcjhIeE03TWxteUZjWEVPN3kvdzRrMlpIRFhsVS84TUdmNy9rcEY1UW9VMWVxRyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjEyOjA1IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzA5NDVmYjFmNmM1MmYxY2NkZTMxIn1dLCJfX3YiOjAsImlhdCI6MTcxMzMyNjUwNywiZXhwIjoxNzEzNDEyOTA3fQ.P-3ey7DYNkW288lYRfiE9dWASf_K46pJtg8rNbjUrFo'}</msg>
+<arg>${response_body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.190341" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.191338" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.190341" elapsed="0.000997"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.191338" level="INFO">Length is 763.</msg>
+<arg>${response_body}[token]</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.191338" elapsed="0.000000"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.192333" level="INFO">${ADMIN_TOKEN} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejB...</msg>
+<arg>${ADMIN_TOKEN}</arg>
+<arg>${response_body}[token]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.191338" elapsed="0.000995"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.192333" level="INFO">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejBBcjhIeE03TWxteUZjWEVPN3kvdzRrMlpIRFhsVS84TUdmNy9rcEY1UW9VMWVxRyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjEyOjA1IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzA5NDVmYjFmNmM1MmYxY2NkZTMxIn1dLCJfX3YiOjAsImlhdCI6MTcxMzMyNjUwNywiZXhwIjoxNzEzNDEyOTA3fQ.P-3ey7DYNkW288lYRfiE9dWASf_K46pJtg8rNbjUrFo</msg>
+<arg>${response_body}[token]</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.192333" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.192333" level="INFO">${response_email} = sysadmin@qacoders.com</msg>
+<var>${response_email}</var>
+<arg>${response_body}[user][mail]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.192333" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_email}</arg>
+<arg>${mail.admin}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.192333" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.192333" level="INFO">${response_password} = $2b$10$6kvBz0Ar8HxM7MlmyFcXEO7y/w4k2ZHDXlU/8MGf7/kpF5QoU1eqG</msg>
+<var>${response_password}</var>
+<arg>${response_body}[user][password]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.192333" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_password}</arg>
+<arg>${response_body}[user][password]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.192333" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-04-17T01:01:43.950642" elapsed="1.241691"/>
+</kw>
+<kw name="Register - New User" owner="user">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.194402" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWV...</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${ADMIN_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.194402" elapsed="0.000000"/>
+</kw>
+<kw name="First Name" owner="FakerLibrary">
+<msg time="2024-04-17T01:01:45.195473" level="INFO">${firstname} = Amanda</msg>
+<var>${firstname}</var>
+<status status="PASS" start="2024-04-17T01:01:45.195473" elapsed="0.000000"/>
+</kw>
+<kw name="Last Name" owner="FakerLibrary">
+<msg time="2024-04-17T01:01:45.195473" level="INFO">${lastname} = Souza</msg>
+<var>${lastname}</var>
+<status status="PASS" start="2024-04-17T01:01:45.195473" elapsed="0.000000"/>
+</kw>
+<kw name="Catenate" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.195473" level="INFO">${fullName} = Amanda Souza</msg>
+<var>${fullName}</var>
+<arg>${firstname} ${lastname}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.195473" elapsed="0.000000"/>
+</kw>
+<kw name="Remove String" owner="String">
+<msg time="2024-04-17T01:01:45.196474" level="INFO">${mail_user} = AmandaSouza</msg>
+<var>${mail_user}</var>
+<arg>${fullName}</arg>
+<arg>.</arg>
+<arg>-</arg>
+<arg>´</arg>
+<arg>`</arg>
+<arg>^</arg>
+<arg>~</arg>
+<arg>Ç</arg>
+<arg>Sra</arg>
+<arg>Srta</arg>
+<arg>Sr</arg>
+<arg>${SPACE}</arg>
+<doc>Removes all ``removables`` from the given ``string``.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.195473" elapsed="0.001001"/>
+</kw>
+<kw name="Convert To Lower Case" owner="String">
+<msg time="2024-04-17T01:01:45.196474" level="INFO">${mail_user} = amandasouza</msg>
+<var>${mail_user}</var>
+<arg>${mail_user}</arg>
+<doc>Converts string to lower case.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.196474" elapsed="0.000000"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.196474" level="INFO">${fullName} = Amanda Souza</msg>
+<arg>${fullName}</arg>
+<arg>${fullName}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.196474" elapsed="0.000000"/>
+</kw>
+<kw name="Create cpf random" owner="user">
+<kw name="Generate Random String" owner="String">
+<msg time="2024-04-17T01:01:45.197464" level="INFO">${random_number} = 99497982330</msg>
+<var>${random_number}</var>
+<arg>length=11</arg>
+<arg>chars=[NUMBERS]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.197464" elapsed="0.000000"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.198464" level="INFO">${cpf} = 99497982330</msg>
+<arg>${cpf}</arg>
+<arg>${random_number}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.197464" elapsed="0.001000"/>
+</kw>
+<status status="PASS" start="2024-04-17T01:01:45.196474" elapsed="0.001990"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T01:01:45.199456" level="INFO">${body} = {'fullName': 'Amanda Souza', 'mail': 'amandasouza@qacoders.com.br', 'password': '2634@Test', 'accessProfile': 'ADMIN', 'cpf': '99497982330', 'confirmPassword': '2634@Test'}</msg>
+<var>${body}</var>
+<arg>fullName=${fullName}</arg>
+<arg>mail=${mail_user}@qacoders.com.br</arg>
+<arg>password=${pass_user}</arg>
+<arg>accessProfile=${accessProfile}</arg>
+<arg>cpf=${cpf}</arg>
+<arg>confirmPassword=${pass_user}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.198464" elapsed="0.000992"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T01:01:45.199456" level="INFO">Creating Session using : alias=auth_session, url=https://quality-eagles.qacoders-academy.com.br/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${alias}</arg>
+<arg>${url}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T01:01:45.199456" elapsed="0.000000"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T01:01:46.487546" level="INFO">POST Request : url=https://quality-eagles.qacoders-academy.com.br/api/user 
+ path_url=/api/user 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejBBcjhIeE03TWxteUZjWEVPN3kvdzRrMlpIRFhsVS84TUdmNy9rcEY1UW9VMWVxRyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjEyOjA1IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzA5NDVmYjFmNmM1MmYxY2NkZTMxIn1dLCJfX3YiOjAsImlhdCI6MTcxMzMyNjUwNywiZXhwIjoxNzEzNDEyOTA3fQ.P-3ey7DYNkW288lYRfiE9dWASf_K46pJtg8rNbjUrFo', 'Content-Length': '172'} 
+ body=b'{"fullName": "Amanda Souza", "mail": "amandasouza@qacoders.com.br", "password": "2634@Test", "accessProfile": "ADMIN", "cpf": "99497982330", "confirmPassword": "2634@Test"}' 
+ </msg>
+<msg time="2024-04-17T01:01:46.487546" level="INFO">POST Response : url=https://quality-eagles.qacoders-academy.com.br/api/user 
+ status=201, reason=Created 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Wed, 17 Apr 2024 04:01:48 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '461', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"1cd-4ILlruZbyPVrks/3FiODzzkFsJE"'} 
+ body={"msg":"Olá Amanda Souza, cadastro realizado com sucesso.","user":{"_id":"661f49ac848bd7f97e09c6e7","fullName":"Amanda Souza","mail":"amandasouza@qacoders.com.br","accessProfile":"ADMIN","cpf":"99497982330","status":true,"audit":[{"registeredBy":{"userId":"65330945fb1f6c52f1ccde30","userLogin":"sysadmin@qacoders.com"},"registrationDate":"quarta-feira, 17/04/2024, 01:01:48 BRT","registrationNumber":"QaCoders-847","_id":"661f49ac848bd7f97e09c6e8"}],"__v":0}} 
+ </msg>
+<msg time="2024-04-17T01:01:46.487546" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>/api/user</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T01:01:45.200453" elapsed="1.287093"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.488544" level="INFO">&lt;Response [201]&gt;</msg>
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.488544" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.489540" level="INFO">${response_body} = {'msg': 'OlÃ¡ Amanda Souza, cadastro realizado com sucesso.', 'user': {'_id': '661f49ac848bd7f97e09c6e7', 'fullName': 'Amanda Souza', 'mail': 'amandasouza@qacoders.com.br', 'accessProfile': 'ADMIN', '...</msg>
+<var>${response_body}</var>
+<arg>json.loads('''${response.content}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.488544" elapsed="0.000996"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.489540" level="INFO">{'msg': 'OlÃ¡ Amanda Souza, cadastro realizado com sucesso.', 'user': {'_id': '661f49ac848bd7f97e09c6e7', 'fullName': 'Amanda Souza', 'mail': 'amandasouza@qacoders.com.br', 'accessProfile': 'ADMIN', 'cpf': '99497982330', 'status': True, 'audit': [{'registeredBy': {'userId': '65330945fb1f6c52f1ccde30', 'userLogin': 'sysadmin@qacoders.com'}, 'registrationDate': 'quarta-feira, 17/04/2024, 01:01:48 BRT', 'registrationNumber': 'QaCoders-847', '_id': '661f49ac848bd7f97e09c6e8'}], '__v': 0}}</msg>
+<arg>${response_body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.489540" elapsed="0.000997"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.490929" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.490696" elapsed="0.000233"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.492007" level="INFO">Length is 50.</msg>
+<arg>${response_body}[msg]</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.490929" elapsed="0.001078"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.493010" level="INFO">${ID_USER} = 661f49ac848bd7f97e09c6e7</msg>
+<arg>${ID_USER}</arg>
+<arg>${response_body}[user][_id]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.492007" elapsed="0.001003"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.494995" level="INFO">${NAME_USER} = Amanda Souza</msg>
+<arg>${NAME_USER}</arg>
+<arg>${response_body}[user][fullName]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.493010" elapsed="0.001985"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.495991" level="INFO">${MAIL_USER} = amandasouza@qacoders.com.br</msg>
+<arg>${MAIL_USER}</arg>
+<arg>${response_body}[user][mail]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.494995" elapsed="0.000996"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.497984" level="INFO">${PROFILE_USER} = ADMIN</msg>
+<arg>${PROFILE_USER}</arg>
+<arg>${response_body}[user][accessProfile]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.495991" elapsed="0.001993"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.498982" level="INFO">${CPF_USER} = 99497982330</msg>
+<arg>${CPF_USER}</arg>
+<arg>${response_body}[user][cpf]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.497984" elapsed="0.001987"/>
+</kw>
+<kw name="Set Test Variable" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.501243" level="INFO">${STATUS_USER} = True</msg>
+<arg>${STATUS_USER}</arg>
+<arg>${response_body}[user][status]</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.499971" elapsed="0.001272"/>
+</kw>
+<status status="PASS" start="2024-04-17T01:01:45.194402" elapsed="1.306841"/>
+</kw>
+<kw name="Login User" owner="user">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.503925" level="INFO">${headers} = {'accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWV...</msg>
+<var>${headers}</var>
+<arg>accept=application/json</arg>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=${ADMIN_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.502845" elapsed="0.001080"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T01:01:46.503925" level="INFO">${body} = {'mail': 'amandasouza@qacoders.com.br', 'password': '2634@Test'}</msg>
+<var>${body}</var>
+<arg>mail=${MAIL_USER}</arg>
+<arg>password=${pass_user}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T01:01:46.503925" elapsed="0.000000"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T01:01:46.504921" level="INFO">Creating Session using : alias=auth_session, url=https://quality-eagles.qacoders-academy.com.br/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>${alias}</arg>
+<arg>${url}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T01:01:46.503925" elapsed="0.000996"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T01:01:46.566967" level="INFO">POST Request : url=https://quality-eagles.qacoders-academy.com.br/api/user/ 
+ path_url=/api/user/ 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'accept': 'application/json', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejBBcjhIeE03TWxteUZjWEVPN3kvdzRrMlpIRFhsVS84TUdmNy9rcEY1UW9VMWVxRyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjEyOjA1IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzA5NDVmYjFmNmM1MmYxY2NkZTMxIn1dLCJfX3YiOjAsImlhdCI6MTcxMzMyNjUwNywiZXhwIjoxNzEzNDEyOTA3fQ.P-3ey7DYNkW288lYRfiE9dWASf_K46pJtg8rNbjUrFo', 'Content-Length': '64'} 
+ body=b'{"mail": "amandasouza@qacoders.com.br", "password": "2634@Test"}' 
+ </msg>
+<msg time="2024-04-17T01:01:46.567970" level="INFO">POST Response : url=https://quality-eagles.qacoders-academy.com.br/api/user/ 
+ status=400, reason=Bad Request 
+ headers={'Server': 'nginx/1.18.0 (Ubuntu)', 'Date': 'Wed, 17 Apr 2024 04:01:49 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '180', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE', 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 'ETag': 'W/"b4-LV8H6axTuDRMGyZj9uFMteMouRg"'} 
+ body={"error":["O campo nome completo é obrigatório.","O campo CPF é obrigatório!","O campo perfil de acesso é obrigatório.","O campo de confirmação de senha é obrigatório."]} 
+ </msg>
+<msg time="2024-04-17T01:01:46.567970" level="FAIL">HTTPError: 400 Client Error: Bad Request for url: https://quality-eagles.qacoders-academy.com.br/api/user/</msg>
+<var>${response}</var>
+<arg>${alias}</arg>
+<arg>api/user/</arg>
+<arg>json=${body}</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2024-04-17T01:01:46.504921" elapsed="0.065041">HTTPError: 400 Client Error: Bad Request for url: https://quality-eagles.qacoders-academy.com.br/api/user/</status>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${response_body}</var>
+<arg>json.loads('''${response.content}''')</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>${response_body}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<arg>${response_body}[token]</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${response_email}</var>
+<arg>${response_body}[user][mail]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_email}</arg>
+<arg>${mail.admin}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.570959" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${response_password}</var>
+<arg>${response_body}[user][password]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.571954" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response_password}</arg>
+<arg>${response_body}[user][password]</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-04-17T01:01:46.571954" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-04-17T01:01:46.502845" elapsed="0.069109">HTTPError: 400 Client Error: Bad Request for url: https://quality-eagles.qacoders-academy.com.br/api/user/</status>
+</kw>
+<tag>login</tag>
+<tag>newuser</tag>
+<status status="FAIL" start="2024-04-17T01:01:43.949465" elapsed="2.623486">HTTPError: 400 Client Error: Bad Request for url: https://quality-eagles.qacoders-academy.com.br/api/user/</status>
+</test>
+<doc>Suite de testes da API de usuários da API Academy da QaCoders</doc>
+<status status="FAIL" start="2024-04-17T01:01:43.553088" elapsed="3.023154"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">login</stat>
+<stat pass="0" fail="1" skip="0">newuser</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="User">User</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
