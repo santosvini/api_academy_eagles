@@ -1,4 +1,4 @@
-# Robor Framework - API Tests Academy(Team Eagles):robot:
+# Robor Framework - API Tests Academy(Team Eagles) :robot:
 
 ![Logo Robot](image.png)
 
