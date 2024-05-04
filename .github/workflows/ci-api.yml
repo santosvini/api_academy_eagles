@@ -1,11 +1,11 @@
 name: Tests Robot - API Academy 👷
 
 on:
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
 
-  # pull_request:
-  #   branches: [main]
+  pull_request:
+    branches: [main]
 
   workflow_dispatch:
 
@@ -41,7 +41,7 @@ jobs:
 
       - run: echo "🤖 Execute tests API Team Eagles 🤖"
       - name: Run Robot Framework tests
-        run: robot --outputdir auth/ /tests/auth.robot
+        run: robot --outputdir auth/ tests/auth.robot
 
       - run: echo "📝 Saving Report Tests 📝"     
       - name: Upload results
