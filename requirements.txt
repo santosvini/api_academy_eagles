@@ -1,5 +1,5 @@
+setuptools‎
 robotframework    
 robotframework-faker
 robotframework-jsonlibrary         
 robotframework-requests
-setuptools‎
